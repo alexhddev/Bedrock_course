@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "target": "ES2022",
+        "module": "commonjs",
+        "rootDir": "src",
+        "outDir": "dist",
+        "strict": true,
+        "esModuleInterop": true,
+        "useUnknownInCatchVariables": false
+    }
+}

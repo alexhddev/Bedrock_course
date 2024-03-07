@@ -1,0 +1,5 @@
+1. npm init -y
+2. npm install -D typescript ts-node @types/node
+3. tsconfig.json
+4. npm i @aws-sdk/client-bedrock @aws-sdk/client-bedrock-runtime
+5. Create sample bedrock api call file
