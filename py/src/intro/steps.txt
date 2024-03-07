@@ -1,0 +1,5 @@
+1. Create virtual environment
+2. Activate virtual environment
+3. Install boto3 - Python sdk for AWS
+    create requirements file
+4. Create sample boto3 bedrock call script
