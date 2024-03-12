@@ -3,9 +3,14 @@ import json
 
 client = boto3.client(service_name='bedrock-runtime', region_name="us-west-2")
 
-def get_configuration(prompt:str):
+history = []
+
+def get_history():
+    return "\n".join(history)
+
+def get_configuration():
     return json.dumps({
-            "inputText": prompt,
+            "inputText": get_history(),
             "textGenerationConfig": {
                 "maxTokenCount": 4096,
                 "stopSequences": [],
@@ -20,12 +25,15 @@ print(
 
 while True:
     user_input = input("User: ")
+    history.append("User: " + user_input)
     if user_input.lower() == "exit":
         break
     response = client.invoke_model(
-        body=get_configuration(user_input), 
+        body=get_configuration(), 
         modelId="amazon.titan-text-express-v1", 
         accept="application/json", 
         contentType="application/json")
     response_body = json.loads(response.get('body').read())
-    print(response_body.get('results')[0].get('outputText'))
+    output_text = response_body.get('results')[0].get('outputText').strip()
+    print(output_text)
+    history.append(output_text)
