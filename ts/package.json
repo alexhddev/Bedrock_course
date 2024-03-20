@@ -16,6 +16,8 @@
   },
   "dependencies": {
     "@aws-sdk/client-bedrock": "^3.525.0",
-    "@aws-sdk/client-bedrock-runtime": "^3.525.0"
+    "@aws-sdk/client-bedrock-runtime": "^3.525.0",
+    "@langchain/community": "^0.0.41",
+    "langchain": "^0.1.28"
   }
 }
