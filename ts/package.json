@@ -17,7 +17,10 @@
   "dependencies": {
     "@aws-sdk/client-bedrock": "^3.525.0",
     "@aws-sdk/client-bedrock-runtime": "^3.525.0",
+    "@aws-sdk/client-s3": "^3.540.0",
+    "@aws-sdk/s3-request-presigner": "^3.540.0",
     "@langchain/community": "^0.0.41",
+    "@types/aws-lambda": "^8.10.136",
     "langchain": "^0.1.28",
     "pdf-parse": "^1.1.1"
   }
