@@ -4,7 +4,7 @@ import { APIGatewayProxyEvent, APIGatewayProxyResult, Context } from "aws-lambda
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner'
 
 const AWS_REGION_BEDROCK = "us-west-2";
-const S3_BUCKET = "images-bucket-111"
+const S3_BUCKET = process.env.BUCKET_NAME
 
 const client = new BedrockRuntimeClient({ region: AWS_REGION_BEDROCK });
 const s3Client = new S3Client();
