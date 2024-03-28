@@ -1,0 +1,7 @@
+POST https://tafov7d6si.execute-api.eu-west-1.amazonaws.com/prod/image
+Content-Type: application/json
+
+{
+    "description": "your image description"
+}
+###
