@@ -1,0 +1,7 @@
+POST https://xxxxx.execute-api.your-region.amazonaws.com/prod/image
+Content-Type: application/json
+
+{
+    "description": "your image description"
+}
+###
