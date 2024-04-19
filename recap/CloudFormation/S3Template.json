@@ -1,0 +1,18 @@
+{
+    "Resources": {
+      "HelloBucket": {
+        "Type": "AWS::S3::Bucket",
+        "Properties": {
+          "LifecycleConfiguration": {
+            "Rules": [
+              {
+                "ExpirationInDays": 3,
+                "Status": "Enabled"
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+  
