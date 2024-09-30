@@ -1,4 +1,4 @@
-from langchain_community.llms import Bedrock
+from langchain_aws import BedrockLLM as Bedrock
 from langchain_core.prompts import ChatPromptTemplate
 import boto3
 
