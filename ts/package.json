@@ -12,17 +12,17 @@
   "devDependencies": {
     "@types/node": "^20.11.25",
     "ts-node": "^10.9.2",
-    "typescript": "^5.4.2"
+    "typescript": "^5.6.3"
   },
   "dependencies": {
-    "@aws-sdk/client-bedrock": "^3.525.0",
-    "@aws-sdk/client-bedrock-agent-runtime": "^3.549.0",
-    "@aws-sdk/client-bedrock-runtime": "^3.540.0",
-    "@aws-sdk/client-s3": "^3.540.0",
-    "@aws-sdk/s3-request-presigner": "^3.540.0",
-    "@langchain/community": "^0.0.41",
-    "@types/aws-lambda": "^8.10.136",
-    "langchain": "^0.1.28",
+    "@aws-sdk/client-bedrock": "^3.687.0",
+    "@aws-sdk/client-bedrock-agent-runtime": "^3.688.0",
+    "@aws-sdk/client-bedrock-runtime": "^3.687.0",
+    "@aws-sdk/client-s3": "^3.689.0",
+    "@aws-sdk/s3-request-presigner": "^3.689.0",
+    "@langchain/community": "^0.3.13",
+    "@types/aws-lambda": "^8.10.145",
+    "langchain": "^0.3.5",
     "pdf-parse": "^1.1.1"
   }
 }
