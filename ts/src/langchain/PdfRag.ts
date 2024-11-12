@@ -1,9 +1,10 @@
-import { BedrockEmbeddings } from "@langchain/community/embeddings/bedrock";
+import { BedrockEmbeddings } from "@langchain/aws";
 import { Bedrock } from "@langchain/community/llms/bedrock";
 import { MemoryVectorStore } from 'langchain/vectorstores/memory'
-import { PDFLoader } from 'langchain/document_loaders/fs/pdf'
+import { PDFLoader } from '@langchain/community/document_loaders/fs/pdf';
 import { ChatPromptTemplate } from '@langchain/core/prompts';
 import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter'
+
 
 const AWS_REGION = 'us-west-2'
 
