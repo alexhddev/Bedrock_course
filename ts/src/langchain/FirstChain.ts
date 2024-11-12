@@ -1,9 +1,9 @@
-import { Bedrock } from "@langchain/community/llms/bedrock";
+import { BedrockChat } from '@langchain/community/chat_models/bedrock';
 import { ChatPromptTemplate } from '@langchain/core/prompts'
 
 const AWS_REGION = 'us-west-2'
 
-const model = new Bedrock({
+const model = new BedrockChat({
     model: 'amazon.titan-text-express-v1',
     region: AWS_REGION
 });
