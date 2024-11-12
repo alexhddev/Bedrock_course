@@ -1,5 +1,5 @@
-from langchain_community.llms import Bedrock
-from langchain_community.embeddings import BedrockEmbeddings
+from langchain_aws import BedrockLLM as Bedrock
+from langchain_aws import BedrockEmbeddings
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_community.vectorstores import FAISS
 import boto3
@@ -31,7 +31,7 @@ retriever = vector_store.as_retriever(
     search_kwargs={"k": 2}  # maybe we can add a score threshold here?
 )
 
-results = retriever.get_relevant_documents(question)
+results = retriever.invoke(question)
 
 results_string = []
 for result in results:
