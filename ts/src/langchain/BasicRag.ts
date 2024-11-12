@@ -1,4 +1,4 @@
-import { BedrockEmbeddings } from "@langchain/community/embeddings/bedrock";
+import { BedrockEmbeddings } from "@langchain/aws";
 import { Bedrock } from "@langchain/community/llms/bedrock";
 import { MemoryVectorStore } from 'langchain/vectorstores/memory'
 import { Document } from '@langchain/core/documents'
@@ -34,7 +34,7 @@ async function main() {
     const retriever = vectorStore.asRetriever({
         k: 2
     });
-    const results = await retriever.getRelevantDocuments(question);
+    const results = await retriever.invoke(question);
     const resultList = results.map(
         result => result.pageContent
     )
