@@ -1,5 +1,5 @@
 from langchain_aws import BedrockLLM as Bedrock
-from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.prompts import PromptTemplate
 import boto3
 
 AWS_REGION = "us-west-2"
@@ -15,16 +15,11 @@ def invoke_model():
 
 
 def first_chain():
-    template = ChatPromptTemplate.from_messages(
-        [
-            (
-                "system",
-                "Write a short description for the product provided by the user",
-            ),
-            ("human", "{product_name}"),
-        ]
+    # Use a plain PromptTemplate with a text LLM (Titan Text Express)
+    prompt = PromptTemplate.from_template(
+        "Write a short, compelling product description for: {product_name}"
     )
-    chain = template.pipe(model)
+    chain = prompt | model
 
     response = chain.invoke({"product_name": "bicycle"})
     print(response)
