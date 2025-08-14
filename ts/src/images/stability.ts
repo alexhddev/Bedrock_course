@@ -4,7 +4,7 @@ import { writeFileSync } from 'fs'
 const client = new BedrockRuntimeClient({ region: 'us-west-2' })
 
 const stabilityImageConfig = {
-    prompt: 'a photo of a dragon'
+    prompt: 'a cool dragon in anime style'
 }
 
 async function invokeModel() {
