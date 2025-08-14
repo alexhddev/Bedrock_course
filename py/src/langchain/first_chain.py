@@ -14,7 +14,7 @@ def invoke_model():
     print(response)
 
 
-def fist_chain():
+def first_chain():
     template = ChatPromptTemplate.from_messages(
         [
             (
@@ -30,4 +30,4 @@ def fist_chain():
     print(response)
 
 
-fist_chain()
+first_chain()
