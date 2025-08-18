@@ -20,7 +20,7 @@ const llamaConfig = {
     temperature: 0,
     top_p: 0.9,
 }
-const llamaModelId = "meta.llama2-13b-chat-v1"
+const llamaModelId = "meta.llama3-70b-instruct-v1:0"
 
 
 async function invokeModel(){

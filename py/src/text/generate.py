@@ -16,7 +16,7 @@ titan_config = json.dumps({
             }
         })
 
-llama_model_id = "meta.llama2-13b-chat-v1"
+llama_model_id = "meta.llama3-70b-instruct-v1:0"
 llama_config = json.dumps({
     "prompt": "Tell me a story about a dragon",
     "max_gen_len": 512,
