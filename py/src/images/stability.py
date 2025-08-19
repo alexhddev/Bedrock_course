@@ -10,7 +10,7 @@ stability_image_config = json.dumps({
 
 response = client.invoke_model(
     body=stability_image_config, 
-    modelId="stability.stable-image-ultra-v1:0", 
+    modelId="stability.stable-image-core-v1:1", 
     accept="application/json", 
     contentType="application/json")
 

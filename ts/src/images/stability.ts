@@ -4,12 +4,12 @@ import { writeFileSync } from 'fs'
 const client = new BedrockRuntimeClient({ region: 'us-west-2' })
 
 const stabilityImageConfig = {
-    prompt: 'a cool dragon in anime style'
+    prompt: 'a photo of a dragon'
 }
 
 async function invokeModel() {
     const response = await client.send(new InvokeModelCommand({
-        modelId: 'stability.stable-image-ultra-v1:0',
+        modelId: 'stability.stable-image-core-v1:1',
         body: JSON.stringify(stabilityImageConfig),
         accept: 'application/json',
         contentType: 'application/json'
