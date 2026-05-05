@@ -1,8 +1,8 @@
 import { BedrockRuntimeClient, ConverseCommand } from '@aws-sdk/client-bedrock-runtime'
 
-const client = new BedrockRuntimeClient({ region: 'eu-central-1' })
+const client = new BedrockRuntimeClient({ region: 'us-east-1' })
 
-const modelId = 'amazon.nova-micro-v1:0'
+const modelId = 'amazon.nova-lite-v1:0'
 
 // Define a tool
 const tools = [
