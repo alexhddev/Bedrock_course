@@ -1,12 +1,12 @@
-import { BedrockRuntimeClient, ConverseCommand } from '@aws-sdk/client-bedrock-runtime'
+import { BedrockRuntimeClient, ConverseCommand, ToolConfiguration } from '@aws-sdk/client-bedrock-runtime'
 
 const client = new BedrockRuntimeClient({ region: 'us-east-1' })
 
 const modelId = 'amazon.nova-lite-v1:0'
 
 // Define a tool
-const tools = [
-    {
+const toolCofig: ToolConfiguration = {
+    tools: [{
         toolSpec: {
             name: 'get_weather',
             description: 'Get the current weather for a given city.',
@@ -23,15 +23,16 @@ const tools = [
                 },
             },
         },
-    },
-]
+
+    }]
+}
 
 // Simulate the tool executing
 function get_weather(city: string): string {
     return `The weather in ${city} is 72°F and sunny.`
 }
 
-async function runWithTools() {
+async function invokeModel() {
     const messages: any[] = [
         { role: 'user', content: [{ text: "What's the weather in Seattle?" }] },
     ]
@@ -40,7 +41,7 @@ async function runWithTools() {
     const response = await client.send(new ConverseCommand({
         modelId,
         messages,
-        toolConfig: { tools },
+        toolConfig: toolCofig,
     }))
 
     const output = response.output?.message!
@@ -50,34 +51,36 @@ async function runWithTools() {
     if (response.stopReason === 'tool_use') {
         const toolUseBlock = output.content?.find(b => b.toolUse)?.toolUse!
         const toolName = toolUseBlock.name!
-        const toolInput = toolUseBlock.input as { city: string }
 
-        console.log(`Model called tool: ${toolName}`, toolInput)
+        if (toolName === 'get_weather') {
+            const toolInput = toolUseBlock.input as { city: string }
 
-        // Execute the tool
-        const toolResult = get_weather(toolInput.city)
+            console.log(`Model called tool: ${toolName}`, toolInput)
 
-        // Send the result back
-        messages.push({
-            role: 'user',
-            content: [{
-                toolResult: {
-                    toolUseId: toolUseBlock.toolUseId,
-                    content: [{ text: toolResult }],
-                },
-            }],
-        })
+            // Execute the tool
+            const toolResult = get_weather(toolInput.city)
 
-        // Second call — model uses the result to respond
-        const finalResponse = await client.send(new ConverseCommand({
-            modelId,
-            messages,
-            toolConfig: { tools },
-        }))
+            // Send the result back
+            messages.push({
+                role: 'user',
+                content: [{
+                    toolResult: {
+                        toolUseId: toolUseBlock.toolUseId,
+                        content: [{ text: toolResult }],
+                    },
+                }],
+            })
 
-        const finalText = finalResponse.output?.message?.content?.[0]?.text
-        console.log('Final response:', finalText)
+            // Second call — model uses the result to respond
+            const finalResponse = await client.send(new ConverseCommand({
+                modelId,
+                messages,
+                toolConfig: toolCofig,
+            }))
+            const finalText = finalResponse.output?.message?.content?.[0]?.text
+            console.log('Final response:', finalText)
+        }
     }
 }
 
-runWithTools()
+invokeModel()
