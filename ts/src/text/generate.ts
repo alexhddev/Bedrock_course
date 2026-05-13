@@ -2,18 +2,6 @@ import { BedrockRuntimeClient, InvokeModelCommand } from '@aws-sdk/client-bedroc
 
 const client = new BedrockRuntimeClient({ region: 'us-west-2' })
 
-const titanConfig = {
-    inputText: 'Tell me a story about a dragon.',
-    textGenerationConfig : {
-        maxTokenCount: 4096,
-        stopSequences: [],
-        temperature: 0,
-        topP: 1,
-    },
-};
-
-const titanModelId = 'amazon.titan-text-express-v1';
-
 const llamaConfig = {
     prompt: 'Tell me a story about a dragon.',
     max_gen_len: 512,

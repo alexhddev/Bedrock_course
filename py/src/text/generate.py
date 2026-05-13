@@ -4,18 +4,6 @@ import pprint
 
 client = boto3.client(service_name='bedrock-runtime', region_name="us-west-2")
 
-titan_model_id = 'amazon.titan-text-express-v1'
-
-titan_config = json.dumps({
-            "inputText": "Tell me a story about a dragon",
-            "textGenerationConfig": {
-                "maxTokenCount": 4096,
-                "stopSequences": [],
-                "temperature": 0,
-                "topP": 1
-            }
-        })
-
 llama_model_id = "meta.llama3-70b-instruct-v1:0"
 llama_config = json.dumps({
     "prompt": "Tell me a story about a dragon",
