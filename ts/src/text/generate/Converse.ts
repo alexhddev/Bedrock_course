@@ -10,6 +10,10 @@ const MODEL_ID = 'us.amazon.nova-2-lite-v1:0'
 async function basicConverse() {
     const response = await client.send(new ConverseCommand({
         modelId: MODEL_ID,
+        // guardrailConfig: {
+        //     guardrailIdentifier: 'Guardrail id',
+        //     guardrailVersion: 'DRAFT'
+        // },
         messages: [
             { role: 'user', content: [{ text: 'Tell me a story about a dragon' }] },
         ],
